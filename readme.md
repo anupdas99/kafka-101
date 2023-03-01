@@ -7,7 +7,7 @@ import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.kafka.core.KafkaTemplate;  
 import org.springframework.stereotype.Service;  
 
-@SpringBootApplication
+@SpringBootApplication   
 public class KafkaApplication {
 
     public static void main(String[] args) {
@@ -15,7 +15,7 @@ public class KafkaApplication {
     }
 }
 
-@Service
+@Service    
 class KafkaService {
 
     private final KafkaTemplate<String, String> kafkaTemplate;
@@ -44,11 +44,11 @@ returning from the send method.
 This can be done by setting the acks configuration property to "all" or "-1" (which waits for acknowledgement from all in-sync replicas),
 and the retries configuration property to a non-zero value (to ensure that messages are retried if acknowledgement is not received).
 
-@Configuration
+@Configuration   
 public class KafkaProducerConfig {
 
     @Value("${spring.kafka.bootstrap-servers}")
-    private String bootstrapServers;
+    private String bootstrapServers;  
 
     @Bean
     public ProducerFactory<String, String> producerFactory() {
@@ -72,8 +72,8 @@ the listener method.
 This can be done by setting the auto-commit configuration property to "false" and manually committing the offsets 
 using the Acknowledgment argument passed to the listener method.
 
-@Configuration
-@EnableKafka
+@Configuration   
+@EnableKafka  
 public class KafkaConsumerConfig {
 
     @Value("${spring.kafka.bootstrap-servers}")
